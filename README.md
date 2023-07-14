@@ -1,1 +1,1 @@
-# Teste de React para processo seletivo Supera
+# Front-end do teste prático Supera

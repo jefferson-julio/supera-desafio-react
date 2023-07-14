@@ -1,7 +1,6 @@
 .main {
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
   align-items: center;
   padding: 6rem;
   min-height: 100vh;
@@ -16,10 +15,23 @@
   flex-direction: column;
 }
 
+.inputBox label {
+  margin-bottom: 0.25rem;
+}
+
+.inputBox input {
+  padding: 0.5rem;
+}
+
 .row {
   display: flex;
   flex-direction: row;
   gap: 1rem;
+}
+
+.table th {
+  text-align: left;
+  min-width: 120px;
 }
 
 .formSubmitButton {

@@ -44,7 +44,15 @@
 
 .table th {
   text-align: left;
-  min-width: 120px;
+  min-width: 150px;
+}
+
+.table td:not(:last-child) {
+  border-right: 1px solid;
+}
+
+.table td:not(:first-child), .table th:not(:first-child) {
+  padding-left: 0.25rem;
 }
 
 .formSubmitButton {

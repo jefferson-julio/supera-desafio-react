@@ -28,11 +28,6 @@ export default function SearchForm({ onSubmit }: SearchFormProps) {
   const handleSubmit: FormEventHandler<HTMLFormElement> = (e) => {
     e.preventDefault()
     onSubmit({...filter})
-    setFilter({
-      op_name: '',
-      date_end: '',
-      date_start: ''
-    })
   }
 
   return (

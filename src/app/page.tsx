@@ -3,19 +3,30 @@
 import styles from './page.module.css'
 import ResultTable from './components/ResultTable'
 import SearchForm, { SearchFormFilter } from './components/SearchForm'
-import { TransactionFilter, transactionSearch } from './services'
+import { TransactionFilter, calculateBalance, transactionSearch } from './services'
 import { useEffect, useState } from 'react'
-import { Pageable, Pagination, Transferencia } from './model'
+import { Pageable, Pagination, Transferencia, TransferenciaSaldo } from './model'
 import Loading from './components/Loading'
 
 export default function Home() {
+  const [_searchParams, _setSearchParams] = useState<[TransactionFilter, Pagination]>();
   const [searchParams, setSearchParams] = useState<[TransactionFilter, Pagination]>()
   const [searchResult, setSearchResult] = useState<Pageable<Transferencia>>()
+  const [balance, setBalance] = useState<TransferenciaSaldo>();
   const [loading, setLoading] = useState(false)
 
   useEffect(() => {
     if (!searchParams) return
     setLoading(true)
+
+    if (!_searchParams || searchParams[0] != _searchParams[0]) {
+      _setSearchParams(searchParams);
+      calculateBalance(searchParams[0]).then(response => {
+        if (response) {
+          setBalance(response)
+        }
+      });
+    }
 
     transactionSearch(searchParams[0], searchParams[1]).then(response => {
       if (response) {
@@ -62,6 +73,7 @@ export default function Home() {
         <ResultTable
           onPageChange={handlePageChange}
           data={searchResult}
+          balance={balance}
         />
       }
     </main>

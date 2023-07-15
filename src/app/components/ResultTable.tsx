@@ -1,16 +1,17 @@
 import moment from 'moment';
-import { Pageable, Transferencia } from '../model';
+import { Pageable, Transferencia, TransferenciaSaldo } from '../model';
 import styles from '../page.module.css';
 import Pagination from './Pagination';
 
 type ResultTableProps = {
   onPageChange: (page: number) => void
+  balance?: TransferenciaSaldo,
   data?: Pageable<Transferencia>
 }
 
 const parseMoney = (val: number) => `R$ ${String(val.toFixed(2)).replace('.', ',')}`
 
-export default function ResultTable({ onPageChange, data }: ResultTableProps) {
+export default function ResultTable({ onPageChange, balance, data }: ResultTableProps) {
 
   if (!data) {
     return <div>Realize uma pesquisa!</div>
@@ -18,11 +19,13 @@ export default function ResultTable({ onPageChange, data }: ResultTableProps) {
 
   return (
     <>
-      <div className={styles.row}>
-        <p>Saldo total: R$ 50,00</p>
-        <p>Saldo no período: R$ 100,00</p>
-      </div>
-      <hr />
+      {balance && <>
+        <div className={styles.row}>
+          <p>Saldo total: {parseMoney(balance.saldoTotal)}</p>
+          <p>Saldo no período: {parseMoney(balance.saldoPeriodo)}</p>
+        </div>
+        <hr />
+      </>}
 
       <div className={styles.resultsTable}>
         <table className={[styles.table, styles.verticalSpace].join(' ')}>

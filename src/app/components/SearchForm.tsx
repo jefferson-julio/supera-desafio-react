@@ -27,7 +27,12 @@ export default function SearchForm({ onSubmit }: SearchFormProps) {
 
   const handleSubmit: FormEventHandler<HTMLFormElement> = (e) => {
     e.preventDefault()
-    onSubmit(filter)
+    onSubmit({...filter})
+    setFilter({
+      op_name: '',
+      date_end: '',
+      date_start: ''
+    })
   }
 
   return (
@@ -35,22 +40,28 @@ export default function SearchForm({ onSubmit }: SearchFormProps) {
       <div className={styles.row}>
         <div className={styles.inputBox}>
           <label htmlFor="date_start">Data de início</label>
-          <input id="date_start" name="date_start" type="date" onChange={handleInput} />
+          <input
+            id="date_start" name="date_start" type="date"
+            value={filter.date_start} onChange={handleInput} />
         </div>
 
         <div className={styles.inputBox}>
           <label htmlFor="date_end">Data de fim</label>
-          <input id="date_end" name="date_end" type="date" onChange={handleInput} />
+          <input
+            id="date_end" name="date_end" type="date"
+            value={filter.date_end} onChange={handleInput} />
         </div>
 
         <div className={styles.inputBox}>
           <label htmlFor="op_name">Nome operador transacionado</label>
-          <input id="op_name" name="op_name" type="text" onChange={handleInput} />
+          <input
+            id="op_name" name="op_name" type="text"
+            value={filter.op_name} onChange={handleInput} />
         </div>
       </div>
 
-      <div className={[styles.formSubmitButton, styles.verticalSpace].join(' ')}>
-        <button type="submit">Pesquisar</button>
+      <div className={styles.verticalSpace}>
+        <button className={styles.formSubmitButton} type="submit">Pesquisar</button>
       </div>
     </form>
   )

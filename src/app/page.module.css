@@ -197,3 +197,19 @@
     grid-template-columns: repeat(2, 50%);
   }
 }
+
+.spinner {
+  border: 8px solid transparent;
+  border-top: 8px solid rgb(var(--foreground-rgb));
+  border-radius: 50%;
+  width: 50px;
+  height: 50px;
+  animation: spin 2s linear infinite;
+  margin-top: 1rem;
+  margin-bottom: 2rem;
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}

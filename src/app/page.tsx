@@ -6,18 +6,22 @@ import SearchForm, { SearchFormFilter } from './components/SearchForm'
 import { TransactionFilter, transactionSearch } from './services'
 import { useEffect, useState } from 'react'
 import { Pageable, Pagination, Transferencia } from './model'
+import Loading from './components/Loading'
 
 export default function Home() {
   const [searchParams, setSearchParams] = useState<[TransactionFilter, Pagination]>()
-  const [searchResult, setSearchResult] = useState<Pageable<Transferencia>>();
+  const [searchResult, setSearchResult] = useState<Pageable<Transferencia>>()
+  const [loading, setLoading] = useState(false)
 
   useEffect(() => {
-    if (!searchParams) return;
+    if (!searchParams) return
+    setLoading(true)
 
     transactionSearch(searchParams[0], searchParams[1]).then(response => {
       if (response) {
         setSearchResult(response)
       }
+      setLoading(false)
     })
   }, [searchParams])
 
@@ -53,10 +57,13 @@ export default function Home() {
       </header>
       <div className={styles.verticalSpace} />
 
-      <ResultTable
-        onPageChange={handlePageChange}
-        data={searchResult}
-      />
+      {loading && <Loading />}
+      {(!loading || searchResult)  &&
+        <ResultTable
+          onPageChange={handlePageChange}
+          data={searchResult}
+        />
+      }
     </main>
   )
 }

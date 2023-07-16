@@ -63,7 +63,9 @@ export default function Home() {
   return (
     <main className={styles.main}>
       <header className={styles.header}>
+        <h1>Transferências</h1>
         <img className={styles.headerImg} alt="Money!" src="/money.gif" />
+        <br/>
         <SearchForm onSubmit={handleFormSubmit} />
       </header>
       <div className={styles.verticalSpace} />

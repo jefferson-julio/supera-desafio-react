@@ -11,6 +11,13 @@
   flex-direction: column;
 }
 
+.header h1 {
+  text-align: center;
+  background-color: rgb(var(--foreground-rgb));
+  color: white;
+  text-transform: uppercase;
+}
+
 .verticalSpace {
   margin-top: 1rem;
 } 
@@ -62,7 +69,6 @@
 }
 
 .headerImg {
-  margin-bottom: 1rem;
   max-width: 100%;
 }
 

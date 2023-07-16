@@ -1,7 +1,7 @@
 import moment from 'moment';
 import { Pageable, Transferencia, TransferenciaSaldo } from '../model';
 import styles from '../page.module.css';
-import Pagination from './Pagination';
+import { Pagination } from './Pagination';
 
 type ResultTableProps = {
   onPageChange: (page: number) => void

@@ -34,7 +34,7 @@ export const transactionSearch = async (filter: TransactionFilter, page: Paginat
     query.set('size', String(page.size))
   }
 
-  const response = await fetch(`http://192.168.0.83:8080/transaction/search?${query}`)
+  const response = await fetch(`/transaction/search?${query}`)
 
   if (response.status >= 200 && response.status < 300) {
     const responseJson = await response.json() as Pageable<Transferencia>
@@ -47,7 +47,7 @@ export const transactionSearch = async (filter: TransactionFilter, page: Paginat
 export const calculateBalance = async (filter: TransactionFilter) => {
   const query = createFilterQuery(filter)
 
-  const response = await fetch(`http://192.168.0.83:8080/transaction/calculateBalance?${query}`, {
+  const response = await fetch(`/transaction/calculateBalance?${query}`, {
     method: 'POST',
   })
 

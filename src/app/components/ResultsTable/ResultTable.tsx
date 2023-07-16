@@ -1,7 +1,7 @@
 import moment from 'moment';
-import { Pageable, Transferencia, TransferenciaSaldo } from '../model';
-import styles from '../page.module.css';
-import { Pagination } from './Pagination';
+import { Pageable, Transferencia, TransferenciaSaldo } from '@/app/model';
+import styles from '@/app/page.module.css';
+import Pagination from '@/app/components/Pagination';
 
 type ResultTableProps = {
   onPageChange: (page: number, size: number) => void
@@ -20,7 +20,7 @@ export default function ResultTable({ onPageChange, balance, data }: ResultTable
   return (
     <>
       {balance && <>
-        <div className={styles.row}>
+        <div data-cy="balance" className={styles.row}>
           <p>Saldo total: {parseMoney(balance.saldoTotal)}</p>
           <p>Saldo no período: {parseMoney(balance.saldoPeriodo)}</p>
         </div>

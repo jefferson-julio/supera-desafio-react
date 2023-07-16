@@ -1,12 +1,12 @@
 'use client'
 
 import styles from './page.module.css'
-import ResultTable from './components/ResultTable'
-import { SearchForm, SearchFormFilter } from './components/SearchForm'
-import { TransactionFilter, calculateBalance, transactionSearch } from './services'
+import ResultTable from '@/app/components/ResultsTable'
+import SearchForm, { SearchFormFilter } from '@/app/components/SearchForm'
+import { TransactionFilter, calculateBalance, transactionSearch } from '@/app/services'
 import { useEffect, useState } from 'react'
-import { Pageable, Pagination, Transferencia, TransferenciaSaldo } from './model'
-import Loading from './components/Loading'
+import { Pageable, Pagination, Transferencia, TransferenciaSaldo } from '@/app/model'
+import Loading from '@/app/components/Loading'
 
 export default function Home() {
   const [_searchParams, _setSearchParams] = useState<[TransactionFilter, Pagination]>();

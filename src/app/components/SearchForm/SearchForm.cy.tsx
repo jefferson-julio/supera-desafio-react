@@ -1,5 +1,5 @@
 import React from 'react'
-import { SearchForm } from './SearchForm'
+import SearchForm from './SearchForm'
 
 describe('<SearchForm />', () => {
   it('clicking submit fires a onSubmit event with a filter object', () => {

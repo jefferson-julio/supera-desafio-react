@@ -6,7 +6,7 @@ type PaginationProps = {
   pageable: Pageable<unknown>
 }
 
-export function Pagination({ onPageChange, pageable }: PaginationProps) {
+export default function Pagination({ onPageChange, pageable }: PaginationProps) {
   return (
     <ul className={styles.row} style={{gap: 4}}>
       {!pageable.first && <>

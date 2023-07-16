@@ -11,7 +11,7 @@ type SearchFormProps = {
   onSubmit: (filter: SearchFormFilter) => void
 }
 
-export function SearchForm({ onSubmit }: SearchFormProps) {
+export default function SearchForm({ onSubmit }: SearchFormProps) {
   const [filter, setFilter] = useState<SearchFormFilter>({
     date_start: '',
     date_end: '',

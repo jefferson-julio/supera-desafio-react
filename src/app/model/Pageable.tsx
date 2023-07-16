@@ -1,7 +1,16 @@
-type Sort = {
+export type Sort = {
   empty: boolean
   sorted: boolean
   unsorted: boolean
+}
+
+export type PageableMeta = {
+  offset: number
+  pageNumber: number
+  pageSize: number
+  paged: boolean
+  sort: Sort
+  unpaged: boolean
 }
 
 export interface Pageable<Content> {
@@ -11,14 +20,7 @@ export interface Pageable<Content> {
   last: boolean
   number: number
   numberOfElements: number
-  pageable: {
-    offset: number
-    pageNumber: number
-    pageSize: number
-    paged: boolean
-    sort: Sort
-    unpaged: boolean
-  }
+  pageable: PageableMeta
   size: boolean
   sort: Sort
   totalElements: number

@@ -1,5 +1,5 @@
 import { ChangeEventHandler, FormEventHandler, useState } from 'react';
-import styles from '../page.module.css';
+import styles from '@/app/page.module.css';
 
 export type SearchFormFilter = {
   date_start: string
@@ -11,7 +11,7 @@ type SearchFormProps = {
   onSubmit: (filter: SearchFormFilter) => void
 }
 
-export default function SearchForm({ onSubmit }: SearchFormProps) {
+export function SearchForm({ onSubmit }: SearchFormProps) {
   const [filter, setFilter] = useState<SearchFormFilter>({
     date_start: '',
     date_end: '',

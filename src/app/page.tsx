@@ -2,7 +2,7 @@
 
 import styles from './page.module.css'
 import ResultTable from './components/ResultTable'
-import SearchForm, { SearchFormFilter } from './components/SearchForm'
+import { SearchForm, SearchFormFilter } from './components/SearchForm'
 import { TransactionFilter, calculateBalance, transactionSearch } from './services'
 import { useEffect, useState } from 'react'
 import { Pageable, Pagination, Transferencia, TransferenciaSaldo } from './model'

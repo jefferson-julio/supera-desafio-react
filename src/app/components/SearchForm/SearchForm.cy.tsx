@@ -2,10 +2,6 @@ import React from 'react'
 import { SearchForm } from './SearchForm'
 
 describe('<SearchForm />', () => {
-  it('renders', () => {
-    cy.mount(<SearchForm onSubmit={() => null} />)
-  })
-
   it('clicking submit fires a onSubmit event with a filter object', () => {
     const onSubmitSpy = cy.spy().as('onSubmitSpy')
     cy.mount(<SearchForm onSubmit={onSubmitSpy} />)

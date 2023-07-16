@@ -20,7 +20,6 @@ export default defineConfig({
     setupNodeEvents(on, config) {
       on('task', {
         generateFakeModel(modelName: string) {
-          console.log('RAMO SIMBORA')
           return generateFakeModel(modelName)
         },
       })

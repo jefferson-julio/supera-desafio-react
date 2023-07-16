@@ -4,7 +4,7 @@ import styles from '../page.module.css';
 import { Pagination } from './Pagination';
 
 type ResultTableProps = {
-  onPageChange: (page: number) => void
+  onPageChange: (page: number, size: number) => void
   balance?: TransferenciaSaldo,
   data?: Pageable<Transferencia>
 }

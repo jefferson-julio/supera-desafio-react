@@ -51,13 +51,13 @@ export default function Home() {
       transactionFilter.nomeOperadorTransacao = filter.op_name
     }
 
-    setSearchParams([transactionFilter, { page: 0, size: 2 }])
+    setSearchParams([transactionFilter, { page: 0, size: 5 }])
   }
 
-  const handlePageChange = (page: number) => {
+  const handlePageChange = (page: number, size: number) => {
     if (!searchParams) return
 
-    setSearchParams([searchParams[0], { ...searchParams[1], page: page }])
+    setSearchParams([searchParams[0], { page, size }])
   }
 
   return (

@@ -113,3 +113,7 @@ button {
 ul {
   list-style: none;
 }
+
+select {
+  padding: 0.25rem;
+}

@@ -21,7 +21,7 @@ export interface Pageable<Content> {
   number: number
   numberOfElements: number
   pageable: PageableMeta
-  size: boolean
+  size: number
   sort: Sort
   totalElements: number
   totalPages: number

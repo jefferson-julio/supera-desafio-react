@@ -71,7 +71,7 @@ describe('<Pagination />', () => {
     cy.get('@onPageChangeSpy').should('have.been.calledWith', 4)
   }))
 
-  it('page index button must fire onPageChange with exact page number',  () => cy.task('generateFakeModel', 'Pageable').then((data) => {
+  it('click on page index button must fire onPageChange with exact page number',  () => cy.task('generateFakeModel', 'Pageable').then((data) => {
     const fakePageableData = data as Pageable<unknown>
     fakePageableData.number = 1
     fakePageableData.totalPages = 3
@@ -82,5 +82,18 @@ describe('<Pagination />', () => {
     cy.mount(<Pagination pageable={fakePageableData} onPageChange={onPageChangeSpy} />)
     cy.get('[data-cy=page-number]').eq(2).click()
     cy.get('@onPageChangeSpy').should('have.been.calledWith', 2)
+  }))
+
+  it('click on size selector must fire onPageChange with exact size number', () => cy.task('generateFakeModel', 'Pageable').then((data) => {
+    const fakePageableData = data as Pageable<unknown>
+    fakePageableData.number = 1
+    fakePageableData.totalPages = 3
+    fakePageableData.last = false
+    fakePageableData.first = false
+    const onPageChangeSpy = cy.spy().as('onPageChangeSpy')
+
+    cy.mount(<Pagination pageable={fakePageableData} onPageChange={onPageChangeSpy} />)
+    cy.get('[data-cy=page-size]').select('15')
+    cy.get('@onPageChangeSpy').should('have.been.calledWith', 1, 15)
   }))
 })
